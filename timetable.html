@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Timetable</title>
+</head>
+<body>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular.min.js"></script>
+    <script type="text/javascript">
+        var app = angular.module('MyApp', [])
+        app.controller('MyCtrl', function ($scope) {
+            $scope.IsVisible = false;
+            $scope.tt= function () {
+                $scope.Timetable = [
+                { Day: "monday", hour1: "English", hour2: "WAD" ,hour3: "OS",
+		  hour4:"DNP",hour5:"OOPS",hour6:"ML" },
+                { Day: "wednesday", hour1: "AI", hour2: "Eco" ,hour3: "JS",
+		  hour4:"DNP",hour5:"English",hour6:"Social" },
+		{ Day: "Thursday", hour1: "Social", hour2: "DBMS" ,hour3: "OS",
+		  hour4:"DS",hour5:"AI",hour6:"ML" }
+               ];
+                $scope.IsVisible = true;
+            };
+        });
+    </script>
+    <div ng-app="MyApp" ng-controller="MyCtrl">
+        <input type="button" value="Generate Timetable" ng-click="tt()" />
+        <br>
+        <table ng-show="IsVisible">
+            <tr>
+                <th>Day</th>
+                <th>hour1</th>
+                <th>hour2</th>
+		<th>hour3</th>
+                <th>hour4</th>
+		<th>hour5</th>
+                <th>hour6</th>
+            </tr>
+            <tbody ng-repeat="t in Timetable">
+                <tr>
+                    <td>{{t.Day}}</td>
+                    <td>{{t.hour1}}</td>
+                    <td>{{t.hour2}}</td>
+		    <td>{{t.hour3}}</td>
+                    <td>{{t.hour4}}</td>
+                    <td>{{t.hour5}}</td>
+                    <td>{{t.hour6}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
